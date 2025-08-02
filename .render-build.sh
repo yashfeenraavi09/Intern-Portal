@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 
-# Build frontend
+# Inside .render-build.sh
 cd frontend
 npm install
-npm run build || exit 1
+npm run build
 
-# Copy dist to backend
-cp -r dist ../backend/dist
+# Copy dist to backend/public
+mkdir -p ../backend/public
+cp -r dist/* ../backend/public
 
-# Install backend dependencies
 cd ../backend
 npm install
