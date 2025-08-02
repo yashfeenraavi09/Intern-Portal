@@ -1,15 +1,13 @@
 #!/usr/bin/env bash
 
+# Build frontend
+cd frontend
+npm install
+npm run build || exit 1
+
+# Copy dist to backend
+cp -r dist ../backend/dist
+
 # Install backend dependencies
-cd backend
+cd ../backend
 npm install
-
-# Install frontend deps and build
-cd ../frontend
-npm install
-npm run build
-
-# Copy frontend build to backend/public
-rm -rf ../backend/public
-mkdir ../backend/public
-cp -r dist/* ../backend/public
